@@ -30,4 +30,14 @@ public class MedicineController {
     public Medicine addMedicine(@RequestBody Medicine medicine) {
         return medicineService.save(medicine);
     }
+
+    @PutMapping(path = "/medicine/{id}")
+    public Medicine updateMedicine(@PathVariable Integer id, @RequestBody Medicine medicine) {
+        return medicineService.update(id, medicine);
+    }
+
+    @DeleteMapping(path = "/medicine/{id}")
+    public void deleteMedicine(@PathVariable Integer id) {
+        medicineService.deleteById(id);
+    }
 }

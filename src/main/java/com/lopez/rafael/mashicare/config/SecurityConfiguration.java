@@ -1,6 +1,7 @@
 package com.lopez.rafael.mashicare.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -13,8 +14,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/medicines").permitAll()
-                .mvcMatchers("/medicine/*").permitAll()
+                .mvcMatchers(HttpMethod.GET, "/medicine/*").permitAll()
                 .mvcMatchers("/medicine").authenticated()
+                .mvcMatchers("/medicine/*").authenticated()
                 .and()
                 .formLogin()
                 .and()

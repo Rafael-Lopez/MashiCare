@@ -42,4 +42,31 @@ public class MedicineService {
 
         return medicineRepository.save(medicine);
     }
+
+    public Medicine update(Integer id, Medicine medicine) {
+        if( id == null ) {
+            throw new IllegalArgumentException("Id must be valid");
+        }
+
+        Medicine original = medicineRepository.findById(id).orElse(null);
+
+        if( original == null ) {
+            throw new EntityNotFoundException("Medicine with ID " + id + "does not exist");
+        }
+
+        original.setSeller(medicine.getSeller());
+        original.setPrice(medicine.getPrice());
+        original.setDescription(medicine.getDescription());
+        original.setName(medicine.getName());
+
+        return medicineRepository.save(original);
+    }
+
+    public void deleteById(Integer id) {
+        if( id == null ) {
+            throw new IllegalArgumentException("Id must be valid");
+        }
+
+        medicineRepository.deleteById(id);
+    }
 }
