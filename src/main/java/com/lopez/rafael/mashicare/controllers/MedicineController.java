@@ -3,9 +3,7 @@ package com.lopez.rafael.mashicare.controllers;
 import com.lopez.rafael.mashicare.entities.Medicine;
 import com.lopez.rafael.mashicare.services.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,5 +24,10 @@ public class MedicineController {
     @GetMapping(path = "/medicine/{id}")
     public Medicine getMedicineById(@PathVariable Integer id) {
         return medicineService.findById(id);
+    }
+
+    @PostMapping(path = "/medicine")
+    public Medicine addMedicine(@RequestBody Medicine medicine) {
+        return medicineService.save(medicine);
     }
 }

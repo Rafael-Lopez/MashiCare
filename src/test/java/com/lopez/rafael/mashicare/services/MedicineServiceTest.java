@@ -84,4 +84,14 @@ public class MedicineServiceTest {
         assertFalse(result.isEmpty());
         assertTrue(result.size() == 2);
     }
+
+    @Test
+    public void shouldThrowIllegalArgumentExceptionWhenMedicineIsNull() {
+        Exception exception = assertThrows( IllegalArgumentException.class, () -> fixture.save(null) );
+
+        String expectedMessage = "Medicine entity cannot be null when saving";
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
 }

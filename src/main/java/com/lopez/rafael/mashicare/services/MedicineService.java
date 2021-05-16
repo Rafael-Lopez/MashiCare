@@ -34,4 +34,12 @@ public class MedicineService {
     public List<Medicine> findAll() {
         return  medicineRepository.findAll();
     }
+
+    public Medicine save(Medicine medicine) {
+        if( medicine == null ) {
+            throw new IllegalArgumentException("Medicine entity cannot be null when saving");
+        }
+
+        return medicineRepository.save(medicine);
+    }
 }

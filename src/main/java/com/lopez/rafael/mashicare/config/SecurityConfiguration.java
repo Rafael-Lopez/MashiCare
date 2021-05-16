@@ -9,9 +9,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http
+                // Disable Spring Security's default CSRF Protection
+                .csrf().disable()
                 .authorizeRequests()
                 .mvcMatchers("/medicines").permitAll()
                 .mvcMatchers("/medicine/*").permitAll()
+                .mvcMatchers("/medicine").authenticated()
                 .and()
                 .formLogin()
                 .and()
