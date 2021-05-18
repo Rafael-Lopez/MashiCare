@@ -15,6 +15,7 @@ public class Medicine {
     private BigDecimal price;
     private String seller;
     private String description;
+    private Boolean enabled;
 
     public Integer getId() {
         return id;
@@ -54,5 +55,13 @@ public class Medicine {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 }

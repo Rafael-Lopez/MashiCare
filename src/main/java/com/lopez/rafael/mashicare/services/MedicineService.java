@@ -58,6 +58,7 @@ public class MedicineService {
         original.setPrice(medicine.getPrice());
         original.setDescription(medicine.getDescription());
         original.setName(medicine.getName());
+        original.setEnabled(medicine.getEnabled());
 
         return medicineRepository.save(original);
     }
