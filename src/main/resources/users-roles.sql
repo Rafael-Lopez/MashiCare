@@ -7,6 +7,7 @@ CREATE TABLE users
 );
 
 INSERT INTO users (username, password, enabled) VALUES('admin','$2a$10$cRqfrdolNVFW6sAju0eNEOE0VC29aIyXwfsEsY2Fz2axy3MnH8ZGa',1);
+INSERT INTO users (username, password, enabled) VALUES('user','$2a$10$cRqfrdolNVFW6sAju0eNEOE0VC29aIyXwfsEsY2Fz2axy3MnH8ZGa',1);
 
 CREATE TABLE authorities
 (
@@ -17,3 +18,4 @@ CREATE TABLE authorities
 
 INSERT INTO authorities VALUES('admin','ROLE_ADMIN');
 INSERT INTO authorities VALUES('admin','ROLE_USER');
+INSERT INTO authorities VALUES('user','ROLE_USER');
