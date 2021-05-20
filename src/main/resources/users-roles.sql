@@ -17,5 +17,4 @@ CREATE TABLE authorities
 );
 
 INSERT INTO authorities VALUES('admin','ROLE_ADMIN');
-INSERT INTO authorities VALUES('admin','ROLE_USER');
 INSERT INTO authorities VALUES('user','ROLE_USER');
