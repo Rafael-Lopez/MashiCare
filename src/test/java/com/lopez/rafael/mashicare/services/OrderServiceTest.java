@@ -2,6 +2,7 @@ package com.lopez.rafael.mashicare.services;
 
 import com.lopez.rafael.mashicare.entities.Order;
 import com.lopez.rafael.mashicare.entities.User;
+import com.lopez.rafael.mashicare.repositories.MedicineOrderRepository;
 import com.lopez.rafael.mashicare.repositories.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,12 +24,16 @@ public class OrderServiceTest {
     @Mock
     private OrderRepository orderRepository;
     @Mock
+    private MedicineOrderRepository medicineOrderRepository;
+    @Mock
     private UserService userService;
+    @Mock
+    private MedicineService medicineService;
     private OrderService fixture;
 
     @BeforeEach
     public void setUp() {
-        fixture = new OrderService(orderRepository, userService);
+        fixture = new OrderService(orderRepository, userService, medicineService, medicineOrderRepository);
     }
 
     @Test
