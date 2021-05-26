@@ -1,3 +1,10 @@
 FROM openjdk:8-jdk-alpine
+ARG DB_URL
+ENV ENV_URL=$DB_URL
+ARG DB_USERNAME
+ENV ENV_USER=$DB_USERNAME
+ARG DB_PASSWORD
+ENV ENV_PASS=$DB_PASSWORD
 COPY target/mashicare-0.0.1-SNAPSHOT.jar mashicare-0.0.1-SNAPSHOT.jar
-ENTRYPOINT ["java","-jar","/mashicare-0.0.1-SNAPSHOT.jar"]
+
+ENTRYPOINT java ${ENV_URL} ${ENV_USER} ${ENV_PASS} -jar /mashicare-0.0.1-SNAPSHOT.jar
