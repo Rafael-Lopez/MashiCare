@@ -1,8 +1,12 @@
 package com.lopez.rafael.mashicare.services;
 
+import com.lopez.rafael.mashicare.dtos.UserDto;
+import com.lopez.rafael.mashicare.entities.Authority;
 import com.lopez.rafael.mashicare.entities.User;
+import com.lopez.rafael.mashicare.repositories.AuthorityRepository;
 import com.lopez.rafael.mashicare.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -10,10 +14,14 @@ import javax.persistence.EntityNotFoundException;
 @Service
 public class UserService {
     private UserRepository userRepository;
+    private AuthorityRepository authorityRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthorityRepository authorityRepository) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.authorityRepository = authorityRepository;
     }
 
     public User findByUsername(String username) {
@@ -28,5 +36,20 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public User saveUser(UserDto userDto) {
+        User newUser = new User();
+        newUser.setUsername(userDto.getUsername());
+        newUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
+        newUser.setEnabled(true);
+
+        Authority newAuthority = new Authority();
+        newAuthority.setUsername(userDto.getUsername());
+        newAuthority.setAuthority("ROLE_USER");
+
+        authorityRepository.save(newAuthority);
+
+        return userRepository.save(newUser);
     }
 }
