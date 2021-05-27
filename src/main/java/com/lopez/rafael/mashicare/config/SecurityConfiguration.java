@@ -22,18 +22,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http
                 .cors()
-//                    .configurationSource(new CorsConfigurationSource() {
-//                        @Override
-//                        public CorsConfiguration getCorsConfiguration(HttpServletRequest httpServletRequest) {
-//                            CorsConfiguration corsConfig = new CorsConfiguration();
-//                            corsConfig.setAllowedOrigins(Collections.singletonList("*"));
-//                            corsConfig.setAllowedMethods(Collections.singletonList("*"));
-//                            corsConfig.setAllowCredentials(true);
-//                            corsConfig.setAllowedHeaders(Collections.singletonList("*"));
-//
-//                            return corsConfig;
-//                        }
-//                    })
+                    .configurationSource(new CorsConfigurationSource() {
+                        @Override
+                        public CorsConfiguration getCorsConfiguration(HttpServletRequest httpServletRequest) {
+                            CorsConfiguration corsConfig = new CorsConfiguration();
+                            corsConfig.setAllowedOrigins(Collections.singletonList("http://ec2-18-223-20-217.us-east-2.compute.amazonaws.com:4200"));
+                            corsConfig.setAllowedMethods(Collections.singletonList("*"));
+                            corsConfig.setAllowCredentials(true);
+                            corsConfig.setAllowedHeaders(Collections.singletonList("*"));
+
+                            return corsConfig;
+                        }
+                    })
                 .and()
                 // Disable Spring Security's default CSRF Protection
                 .csrf().disable()
