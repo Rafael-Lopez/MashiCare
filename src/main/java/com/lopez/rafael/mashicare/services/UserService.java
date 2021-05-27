@@ -44,12 +44,14 @@ public class UserService {
         newUser.setPassword(passwordEncoder.encode(userDto.getPassword()));
         newUser.setEnabled(true);
 
+        newUser = userRepository.save(newUser);
+
         Authority newAuthority = new Authority();
-        newAuthority.setUsername(userDto.getUsername());
+        newAuthority.setUsername(newUser.getUsername());
         newAuthority.setAuthority("ROLE_USER");
 
         authorityRepository.save(newAuthority);
 
-        return userRepository.save(newUser);
+        return newUser;
     }
 }
