@@ -14,7 +14,9 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -26,7 +28,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         @Override
                         public CorsConfiguration getCorsConfiguration(HttpServletRequest httpServletRequest) {
                             CorsConfiguration corsConfig = new CorsConfiguration();
-                            corsConfig.setAllowedOrigins(Collections.singletonList("http://ec2-3-23-61-217.us-east-2.compute.amazonaws.com:4200"));
+                            List<String> origins = new ArrayList();
+                            origins.add("http://ec2-3-23-61-217.us-east-2.compute.amazonaws.com:4200");
+                            origins.add("http://localhost:4200");
+                            corsConfig.setAllowedOrigins(origins);
                             corsConfig.setAllowedMethods(Collections.singletonList("*"));
                             corsConfig.setAllowCredentials(true);
                             corsConfig.setAllowedHeaders(Collections.singletonList("*"));
