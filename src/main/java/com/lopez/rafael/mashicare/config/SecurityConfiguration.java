@@ -26,7 +26,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         @Override
                         public CorsConfiguration getCorsConfiguration(HttpServletRequest httpServletRequest) {
                             CorsConfiguration corsConfig = new CorsConfiguration();
-                            corsConfig.setAllowedOrigins(Collections.singletonList("http://ec2-18-223-20-217.us-east-2.compute.amazonaws.com:4200"));
+                            corsConfig.setAllowedOrigins(Collections.singletonList("http://ec2-3-23-61-217.us-east-2.compute.amazonaws.com:4200"));
                             corsConfig.setAllowedMethods(Collections.singletonList("*"));
                             corsConfig.setAllowCredentials(true);
                             corsConfig.setAllowedHeaders(Collections.singletonList("*"));
