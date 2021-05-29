@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -97,6 +98,15 @@ public class MedicineServiceTest {
     }
 
     @Test
+    public void shouldSaveWhenSavingMedicine() {
+        Medicine medicine1 = new Medicine();
+
+        fixture.save(medicine1);
+
+        verify(medicineRepository).save(medicine1);
+    }
+
+    @Test
     public void shouldThrowIllegalArgumentExceptionWhenUpdatingAndIdIsNull() {
         Exception exception = assertThrows( IllegalArgumentException.class, () -> fixture.update(null, new Medicine()) );
 
@@ -155,5 +165,12 @@ public class MedicineServiceTest {
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    @Test
+    public void shouldDeleteWhenDeletingAndIdProvide() {
+        fixture.deleteById(MEDICINE_ID);
+
+        verify(medicineRepository).deleteById(MEDICINE_ID);
     }
 }

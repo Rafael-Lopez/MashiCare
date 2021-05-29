@@ -102,6 +102,12 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>com/lopez/rafael/mashicare/dtos/*</exclude>
+                        <exclude>com/lopez/rafael/mashicare/entities/*</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
         </plugins>
     </build>
