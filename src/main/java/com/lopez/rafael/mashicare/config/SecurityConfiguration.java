@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         public CorsConfiguration getCorsConfiguration(HttpServletRequest httpServletRequest) {
                             CorsConfiguration corsConfig = new CorsConfiguration();
                             List<String> origins = new ArrayList();
-                            origins.add("http://ec2-3-23-61-217.us-east-2.compute.amazonaws.com:4200");
+                            origins.add("http://ec2-3-138-191-227.us-east-2.compute.amazonaws.com:4200");
                             origins.add("http://localhost:4200");
                             corsConfig.setAllowedOrigins(origins);
                             corsConfig.setAllowedMethods(Collections.singletonList("*"));
